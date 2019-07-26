@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
-interface Todo {
-  title: string;
-}
+import { Todo } from '@nest-ng-gql/data';
 
 @Injectable()
 export class AppService {

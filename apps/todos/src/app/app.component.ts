@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface Todo {
-  title: string;
-}
+import { Todo } from '@nest-ng-gql/data';
 
 @Component({
   selector: 'nest-ng-gql-root',

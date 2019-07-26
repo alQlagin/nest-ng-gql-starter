@@ -17,13 +17,8 @@
             "polyfills": "apps/todos/src/polyfills.ts",
             "tsConfig": "apps/todos/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/todos/src/favicon.ico",
-              "apps/todos/src/assets"
-            ],
-            "styles": [
-              "apps/todos/src/styles.css"
-            ],
+            "assets": ["apps/todos/src/favicon.ico", "apps/todos/src/assets"],
+            "styles": ["apps/todos/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -78,10 +73,7 @@
               "apps/todos/tsconfig.app.json",
               "apps/todos/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/todos/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/todos/**"]
           }
         },
         "test": {
@@ -116,13 +108,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "tslint",
-            "tsConfig": [
-              "apps/todos-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/todos-e2e/**"
-            ]
+            "tsConfig": ["apps/todos-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/todos-e2e/**"]
           }
         }
       }
@@ -140,9 +127,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -172,10 +157,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
           }
         },
         "test": {
@@ -183,6 +165,32 @@
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "tsConfig": "apps/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "tslint",
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/data/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "tsConfig": "libs/data/tsconfig.spec.json"
           }
         }
       }
