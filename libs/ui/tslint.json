@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "nestNgGql", "camelCase"],
+    "component-selector": [true, "element", "nest-ng-gql", "kebab-case"]
+  }
+}
