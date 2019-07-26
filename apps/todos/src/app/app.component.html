@@ -1,4 +1,4 @@
 <h1>Todos</h1>
 
-<nest-ng-gql-todos  [todos]="todos"></nest-ng-gql-todos>
+<nest-ng-gql-todos  [todos]="todos$|async"></nest-ng-gql-todos>
 <button id="add-todo" (click)="addTodo()">Add Todo</button>
