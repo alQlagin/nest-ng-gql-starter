@@ -10,8 +10,10 @@ export class AppService {
   }
 
   addTodo() {
-    this.todos.push({
+    const newTodo = {
       title: `New todo ${Math.floor(Math.random() * 1000)}`
-    });
+    };
+    this.todos.push(newTodo);
+    return newTodo;
   }
 }

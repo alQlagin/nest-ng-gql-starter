@@ -1,0 +1,15 @@
+type Todo {
+  title: String
+}
+
+type Query {
+  todos: [Todo!]
+}
+
+type Mutation {
+  addTodo: Todo
+}
+
+type Subscription {
+  todoAdded: Todo
+}
