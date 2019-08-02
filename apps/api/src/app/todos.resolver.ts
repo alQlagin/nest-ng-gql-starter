@@ -1,11 +1,12 @@
-import { Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { Mutation, Parent, Query, ResolveProperty, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 
 import { AppService } from './app.service';
+import { Todo } from '@nest-ng-gql/data';
 
 const pubSub = new PubSub();
 
-@Resolver('Todos')
+@Resolver('Todo')
 export class TodosResolver {
   constructor(
     private readonly appService: AppService
@@ -13,15 +14,20 @@ export class TodosResolver {
   }
 
   @Query('todos')
-  async todos() {
+  async getTodos() {
     return this.appService.getData();
   }
 
   @Mutation()
   async addTodo() {
     const newTodo = this.appService.addTodo();
-    await pubSub.publish('todoAdded', {todoAdded: newTodo});
+    await pubSub.publish('todoAdded', { todoAdded: newTodo });
     return newTodo;
+  }
+
+  @ResolveProperty('tags')
+  getTags(@Parent() todo: Todo) {
+    return todo.tags.map(id => this.appService.getTag(id));
   }
 
   @Subscription()

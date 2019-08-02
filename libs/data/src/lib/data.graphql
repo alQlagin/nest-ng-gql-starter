@@ -1,5 +1,11 @@
+type Tag {
+  id: Int,
+  text: String
+}
+
 type Todo {
   title: String
+  tags: [Tag!]
 }
 
 type Query {
