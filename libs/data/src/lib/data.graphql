@@ -4,6 +4,7 @@ type Tag {
 }
 
 type Todo {
+  id: Int
   title: String
   tags: [Tag!]
 }

@@ -20,14 +20,15 @@ export class TodosResolver {
 
   @Mutation()
   async addTodo() {
-    const newTodo = this.appService.addTodo();
+    const newTodo = await this.appService.addTodo();
     await pubSub.publish('todoAdded', { todoAdded: newTodo });
     return newTodo;
   }
 
   @ResolveProperty('tags')
   getTags(@Parent() todo: Todo) {
-    return todo.tags.map(id => this.appService.getTag(id));
+    const tagsPromises = todo.tags.map(id => this.appService.getTag(id));
+    return Promise.all(tagsPromises)
   }
 
   @Subscription()

@@ -3,9 +3,10 @@ import { Tag, Todo } from '@nest-ng-gql/data';
 
 @Injectable()
 export class AppService {
+  private id = 1;
   todos: Todo[] = [
-    { title: 'Todo 1', tags: [1, 3] },
-    { title: 'Todo 2', tags: [3] }
+    {id: this.id++, title: 'Todo 1', tags: [1, 3] },
+    {id: this.id++, title: 'Todo 2', tags: [3] }
   ];
 
   tags = new Map([
@@ -14,12 +15,13 @@ export class AppService {
     [3, 'angular']
   ]);
 
-  getData(): Todo[] {
+  async getData(): Promise<Todo[]> {
     return this.todos;
   }
 
-  addTodo() {
+  async addTodo(): Promise<Todo> {
     const newTodo = {
+      id: this.id++,
       title: `New todo ${Math.floor(Math.random() * 1000)}`,
       tags: []
     };
@@ -27,7 +29,7 @@ export class AppService {
     return newTodo;
   }
 
-  getTag(tag: Tag | number) {
+  async getTag(tag: Tag | number): Promise<Tag> {
     if (typeof tag !== 'number') {
       return tag;
     }
